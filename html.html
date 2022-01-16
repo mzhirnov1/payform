@@ -1,0 +1,40 @@
+<!----------- Product info ------------>
+<div class="stripe_box stripe_currency active">
+  <div class="selectbox">
+    <input type="hidden" name="cost" value="13">
+    <input type="hidden" name="currency" value="USD">
+    <button type="button" class="switch_currency dropdown">
+      <span class="name">U.S. dollar (USD)</span>
+    </button>
+    <div class="hiddenbox">
+      <div class="search"><input type="text" name="search" class="currencies" value=""></div>
+      <ul class="currencies_list droplist"></ul>
+    </div>
+  </div>
+  <div class="total_cost">$13.00</div>
+  <button class="next_step btn" data-target="stripe_phone" type="button">Купить</button>
+</div>
+<!----------- ### Product info ------------>
+<!----------- Input phone ------------>
+<div class="stripe_box stripe_phone">
+  <div class="error_phone"></div>
+  <div class="selectbox">
+    <div class="fieldset">
+      <button type="button" class="switch_country dropdown">
+        <span class="stripe-flag-ico" data-ico="ru"></span>
+        <span class="name">+7</span>
+      </button>
+      <input type="hidden" name="code" value="+7">
+      <input type="tel" name="phone" class="validate_phone" value="">
+    </div>
+    <div class="hiddenbox">
+      <div class="search"><input type="text" name="search" value=""></div>
+      <ul class="countries_list droplist"></ul>
+    </div>
+  </div>
+  <button class="next_step validate btn" type="button">
+    <span class="spinner" role="status"></span>
+    <span class="name">Оплатить</span>
+  </button>
+</div>
+<!----------- ### Input phone ------------>

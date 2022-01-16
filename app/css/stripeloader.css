@@ -1,0 +1,487 @@
+body{
+  margin: 0;
+  padding: 0;
+  background: #fff;
+}
+.formbox{
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.stripe_box{
+  display: none;
+  max-width: 300px;
+  width: 100%;
+  margin: 100px auto;
+}
+.stripe_box.active{
+  display: block;
+}
+.stripe_box *{
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.stripe_box button.btn{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 42px;
+  margin: 10px 0 0;
+  border: 0;
+  border-radius: 3px;
+  background: #333333;
+  font-size: 16px;
+  font-weight: 600;
+  color: #f1e8e2;
+  cursor: pointer;
+  transition: background .15s ease;
+}
+.stripe_box button:hover{
+  background: #2a2a2a;
+}
+.stripe_box button:disabled{
+  opacity: .5;
+}
+.stripe_box button.btn span{
+  display: block;
+  padding: 0 0 0 10px;
+}
+.stripe_box button.btn span.spinner{
+  display: none;
+  max-width: 16px;
+  min-width: 16px;
+  height: 16px;
+  padding: 0;
+  margin: 0 10px 0 0;
+  border: 2px solid #a61f0f;
+  border-right-color: transparent;
+  border-radius: 50%;
+  -webkit-animation: spinner .75s linear infinite;
+  animation: spinner .75s linear infinite;
+}
+.stripe_box button.btn.loaded span.spinner{
+  display: block;
+}
+@keyframes spinner {
+  to { 
+    transform: rotate(360deg); 
+  }
+}
+.stripe_box button.btn span.name{
+  padding: 0;
+}
+.stripe_box .selectbox{
+  position: relative;
+}
+.stripe_box .selectbox button{
+  display: flex;
+  align-items: center;
+  margin: 0;
+  background: #fff;
+  cursor: pointer;
+}
+.stripe_box .selectbox button.switch_currency,
+.stripe_box .selectbox button.set_currency,
+.stripe_box .selectbox button.set_country{
+  width: 100%;
+  height: 42px;
+  padding: 0 14px;
+  border: 1px solid #d1d1d1;
+  transition: background .15s ease;
+}
+.stripe_box .selectbox button.switch_currency:hover,
+.stripe_box .selectbox button.set_currency:hover,
+.stripe_box .selectbox button.set_country:hover{
+  background: #f1f1f1;
+}
+.stripe_box .selectbox button.switch_currency span.name,
+.stripe_box .selectbox button.set_currency span.name,
+.stripe_box .selectbox button.set_country span.name{
+  display: block;
+  padding: 0 0 0 10px;
+  text-align: left;
+}
+.stripe_box .selectbox button.switch_currency span.name,
+.stripe_box .selectbox button.set_currency span.name{
+  padding: 0;
+}
+.stripe_box .selectbox .fieldset{
+  display: flex;
+  justify-content: space-between;
+}
+.stripe_box .selectbox button.switch_country{
+  display: flex;
+  align-items: center;
+  width: auto;
+  height: 42px;
+  padding: 0 1px 0 14px;
+  border: 0 solid #d1d1d1;
+  border-width: 1px 0 1px 1px;
+  border-radius: 3px 0 0 3px;
+}
+.stripe_box .selectbox button.switch_country span.name{
+  display: block;
+  padding: 0 0 0 10px;
+}
+.stripe_box .selectbox button.switch_country:before{
+  display: block;
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 6px solid #333333;
+  margin: 0 8px 0 0;
+  content: "";
+}
+.stripe_box .selectbox .hiddenbox{
+  position: absolute;
+  top: 100%;
+  left: 0;
+  display: none;
+  width: 100%;
+}
+.stripe_box .selectbox .hiddenbox .search{
+  padding: 8px;
+  border: 0 solid #d1d1d1;
+  border-width: 0 1px 1px;
+  background: #fff;
+}
+.stripe_box .selectbox .hiddenbox .search input{
+  display: block;
+  width: 100%;
+  height: 34px;
+  padding: 0 10px;
+  margin: 0;
+  border: 1px solid #d1d1d1;
+  border-radius: 3px;
+  outline: 0;
+}
+.stripe_box .selectbox .hiddenbox ul{
+  max-height: 208px;
+  padding: 0;
+  margin: 0;
+  border: 0 solid #d1d1d1;
+  border-width: 0 1px 1px;
+  background: #ffffff;
+  list-style: none;
+  overflow: auto;
+}
+.stripe_box .selectbox .hiddenbox ul li{
+  padding: 0;
+  margin: 0;
+}
+.stripe_box .selectbox .hiddenbox ul li button{
+  border-width: 0 1px 1px 0;
+}
+.stripe_box .selectbox .hiddenbox ul li:last-child button{
+  border-width: 0 1px 0 0;
+}
+.stripe_box .selectbox .hiddenbox ul li button.active{
+  background: #e1e1e1;
+}
+.stripe_box .selectbox .hiddenbox ul li button.hidden{
+  display: none;
+}
+.stripe_currency{
+  position: relative;
+}
+.stripe_currency .total_cost{
+  padding: 20px 0;
+  font-size: 20px;
+  text-align: center;
+}
+.stripe_phone{
+  flex-flow: row wrap;
+}
+.stripe_phone.active{
+  display: flex;
+}
+.stripe_phone .selectbox{
+  width: 100%;
+}
+.stripe_phone .error_phone{
+  display: none;
+  width: 100%;
+  padding: 10px;
+  margin: 0 0 10px;
+  background: #F95D51;
+  color: #fff;
+  text-align: center;
+}
+.stripe_phone .error_phone.active{
+  display: block;
+}
+.stripe_phone .selectbox input{
+  flex: 1 1 100%;
+  display: block;
+  height: 42px;
+  padding: 0 14px 0 10px;
+  margin: 0;
+  border: 1px solid #d1d1d1;
+  border-width: 1px 1px 1px 0;
+  border-radius: 0 3px 3px 0;
+  outline: 0;
+}
+.stripe_phone .selectbox input::-moz-placeholder{
+  color: #8d8d8d;
+}
+.stripe_phone .selectbox input::-webkit-input-placeholder{
+  color: #8d8d8d;
+}
+.stripe_phone .selectbox input:-ms-input-placeholder{
+  color: #8d8d8d;
+}
+.stripe_phone .selectbox input::-ms-input-placeholder{
+  color: #8d8d8d;
+}
+.stripe_phone .selectbox input::placeholder{
+  color: #8d8d8d;
+}
+.stripe-flag-ico{
+  display: block;
+  max-width: 18px;
+  min-width: 18px;
+  height: 13px;
+  border: 1px solid #d1d1d1;
+  background: url(https://pay.telo.club/app/img/flags.png) 0 0 no-repeat;
+}
+.stripe-flag-ico[data-ico="au"]{background-position: -208px 0px}
+.stripe-flag-ico[data-ico="at"]{background-position: -192px 0px}
+.stripe-flag-ico[data-ico="az"]{background-position: -240px 0px}
+.stripe-flag-ico[data-ico="ax"]{background-position: -192px -66px}
+.stripe-flag-ico[data-ico="al"]{background-position: -96px 0px}
+.stripe-flag-ico[data-ico="dz"]{background-position: -160px -33px}
+.stripe-flag-ico[data-ico="ai"]{background-position: -80px 0px}
+.stripe-flag-ico[data-ico="ao"]{background-position: -144px 0px}
+.stripe-flag-ico[data-ico="ad"]{background-position: -16px 0px}
+.stripe-flag-ico[data-ico="ag"]{background-position: -64px 0px}
+.stripe-flag-ico[data-ico="mo"]{background-position: -48px -99px}
+.stripe-flag-ico[data-ico="ar"]{background-position: -160px 0px}
+.stripe-flag-ico[data-ico="am"]{background-position: -112px 0px}
+.stripe-flag-ico[data-ico="aw"]{background-position: -224px 0px}
+.stripe-flag-ico[data-ico="af"]{background-position: -48px 0px}
+.stripe-flag-ico[data-ico="bs"]{background-position: -208px -11px}
+.stripe-flag-ico[data-ico="bd"]{background-position: -32px -11px}
+.stripe-flag-ico[data-ico="bb"]{background-position: -16px -11px}
+.stripe-flag-ico[data-ico="bh"]{background-position: -96px -11px}
+.stripe-flag-ico[data-ico="by"]{background-position: -16px -22px}
+.stripe-flag-ico[data-ico="bz"]{background-position: -32px -22px}
+.stripe-flag-ico[data-ico="be"]{background-position: -48px -11px}
+.stripe-flag-ico[data-ico="bj"]{background-position: -128px -11px}
+.stripe-flag-ico[data-ico="bm"]{background-position: -144px -11px}
+.stripe-flag-ico[data-ico="bg"]{background-position: -80px -11px}
+.stripe-flag-ico[data-ico="bo"]{background-position: -176px -11px}
+.stripe-flag-ico[data-ico="bq"]{background-position: 0% 0%}
+.stripe-flag-ico[data-ico="ba"]{background-position: 0px -11px}
+.stripe-flag-ico[data-ico="bw"]{background-position: 0px -22px}
+.stripe-flag-ico[data-ico="br"]{background-position: -192px -11px}
+.stripe-flag-ico[data-ico="io"]{background-position: -144px -66px}
+.stripe-flag-ico[data-ico="vg"]{background-position: -240px -154px}
+.stripe-flag-ico[data-ico="bn"]{background-position: -160px -11px}
+.stripe-flag-ico[data-ico="bf"]{background-position: -64px -11px}
+.stripe-flag-ico[data-ico="bi"]{background-position: -112px -11px}
+.stripe-flag-ico[data-ico="bt"]{background-position: -224px -11px}
+.stripe-flag-ico[data-ico="vu"]{background-position: -32px -165px}
+.stripe-flag-ico[data-ico="va"]{background-position: -192px -154px}
+.stripe-flag-ico[data-ico="gb"]{background-position: -176px -44px}
+.stripe-flag-ico[data-ico="hu"]{background-position: -32px -66px}
+.stripe-flag-ico[data-ico="ve"]{background-position: -224px -154px}
+.stripe-flag-ico[data-ico="vi"]{background-position: 0px -165px}
+.stripe-flag-ico[data-ico="um"]{background-position: -128px -154px}
+.stripe-flag-ico[data-ico="tl"]{background-position: -208px -143px}
+.stripe-flag-ico[data-ico="vn"]{background-position: -16px -165px}
+.stripe-flag-ico[data-ico="ga"]{background-position: -160px -44px}
+.stripe-flag-ico[data-ico="ht"]{background-position: -16px -66px}
+.stripe-flag-ico[data-ico="gy"]{background-position: -192px -55px}
+.stripe-flag-ico[data-ico="gm"]{background-position: -48px -55px}
+.stripe-flag-ico[data-ico="gh"]{background-position: 0px -55px}
+.stripe-flag-ico[data-ico="gp"]{background-position: -80px -55px}
+.stripe-flag-ico[data-ico="gt"]{background-position: -144px -55px}
+.stripe-flag-ico[data-ico="gn"]{background-position: -64px -55px}
+.stripe-flag-ico[data-ico="gw"]{background-position: -176px -55px}
+.stripe-flag-ico[data-ico="de"]{background-position: -80px -33px}
+.stripe-flag-ico[data-ico="gi"]{background-position: -16px -55px}
+.stripe-flag-ico[data-ico="hn"]{background-position: -240px -55px}
+.stripe-flag-ico[data-ico="hk"]{background-position: -208px -55px}
+.stripe-flag-ico[data-ico="gd"]{background-position: -192px -44px}
+.stripe-flag-ico[data-ico="gl"]{background-position: -32px -55px}
+.stripe-flag-ico[data-ico="gr"]{background-position: -112px -55px}
+.stripe-flag-ico[data-ico="ge"]{background-position: -208px -44px}
+.stripe-flag-ico[data-ico="gu"]{background-position: -160px -55px}
+.stripe-flag-ico[data-ico="dk"]{background-position: -112px -33px}
+.stripe-flag-ico[data-ico="cd"]{background-position: -80px -22px}
+.stripe-flag-ico[data-ico="dj"]{background-position: -96px -33px}
+.stripe-flag-ico[data-ico="dm"]{background-position: -128px -33px}
+.stripe-flag-ico[data-ico="do"]{background-position: -144px -33px}
+.stripe-flag-ico[data-ico="eg"]{background-position: -208px -33px}
+.stripe-flag-ico[data-ico="zm"]{background-position: -160px -165px}
+.stripe-flag-ico[data-ico="zw"]{background-position: -176px -165px}
+.stripe-flag-ico[data-ico="il"]{background-position: -96px -66px}
+.stripe-flag-ico[data-ico="in"]{background-position: -128px -66px}
+.stripe-flag-ico[data-ico="id"]{background-position: -64px -66px}
+.stripe-flag-ico[data-ico="jo"]{background-position: 0px -77px}
+.stripe-flag-ico[data-ico="iq"]{background-position: -160px -66px}
+.stripe-flag-ico[data-ico="ir"]{background-position: -176px -66px}
+.stripe-flag-ico[data-ico="ie"]{background-position: -80px -66px}
+.stripe-flag-ico[data-ico="is"]{background-position: -192px -66px}
+.stripe-flag-ico[data-ico="es"]{background-position: -16px -44px}
+.stripe-flag-ico[data-ico="it"]{background-position: -208px -66px}
+.stripe-flag-ico[data-ico="ye"]{background-position: -96px -165px}
+.stripe-flag-ico[data-ico="kz"]{background-position: -208px -77px}
+.stripe-flag-ico[data-ico="ky"]{background-position: -192px -77px}
+.stripe-flag-ico[data-ico="kh"]{background-position: -64px -77px}
+.stripe-flag-ico[data-ico="cm"]{background-position: -192px -22px}
+.stripe-flag-ico[data-ico="ca"]{background-position: -48px -22px}
+.stripe-flag-ico[data-ico="qa"]{background-position: -160px -121px}
+.stripe-flag-ico[data-ico="ke"]{background-position: -32px -77px}
+.stripe-flag-ico[data-ico="cy"]{background-position: -48px -33px}
+.stripe-flag-ico[data-ico="kg"]{background-position: -48px -77px}
+.stripe-flag-ico[data-ico="ki"]{background-position: -80px -77px}
+.stripe-flag-ico[data-ico="cn"]{background-position: -208px -22px}
+.stripe-flag-ico[data-ico="cc"]{background-position: 0% 0%}
+.stripe-flag-ico[data-ico="co"]{background-position: -224px -22px}
+.stripe-flag-ico[data-ico="km"]{background-position: -96px -77px}
+.stripe-flag-ico[data-ico="cg"]{background-position: -112px -22px}
+.stripe-flag-ico[data-ico="kp"]{background-position: -128px -77px}
+.stripe-flag-ico[data-ico="cr"]{background-position: -240px -22px}
+.stripe-flag-ico[data-ico="ci"]{background-position: -144px -22px}
+.stripe-flag-ico[data-ico="cu"]{background-position: 0px -33px}
+.stripe-flag-ico[data-ico="kw"]{background-position: -176px -77px}
+.stripe-flag-ico[data-ico="cw"]{background-position: -32px -33px}
+.stripe-flag-ico[data-ico="la"]{background-position: -224px -77px}
+.stripe-flag-ico[data-ico="lv"]{background-position: -112px -88px}
+.stripe-flag-ico[data-ico="ls"]{background-position: -64px -88px}
+.stripe-flag-ico[data-ico="lr"]{background-position: -48px -88px}
+.stripe-flag-ico[data-ico="lb"]{background-position: -240px -77px}
+.stripe-flag-ico[data-ico="ly"]{background-position: -128px -88px}
+.stripe-flag-ico[data-ico="lt"]{background-position: -80px -88px}
+.stripe-flag-ico[data-ico="li"]{background-position: -16px -88px}
+.stripe-flag-ico[data-ico="lu"]{background-position: -96px -88px}
+.stripe-flag-ico[data-ico="mu"]{background-position: -144px -99px}
+.stripe-flag-ico[data-ico="mr"]{background-position: -96px -99px}
+.stripe-flag-ico[data-ico="mg"]{background-position: -208px -88px}
+.stripe-flag-ico[data-ico="yt"]{background-position: -112px -165px}
+.stripe-flag-ico[data-ico="mk"]{background-position: -240px -88px}
+.stripe-flag-ico[data-ico="mw"]{background-position: -176px -99px}
+.stripe-flag-ico[data-ico="my"]{background-position: -208px -99px}
+.stripe-flag-ico[data-ico="ml"]{background-position: 0px -99px}
+.stripe-flag-ico[data-ico="mv"]{background-position: -160px -99px}
+.stripe-flag-ico[data-ico="mt"]{background-position: -128px -99px}
+.stripe-flag-ico[data-ico="ma"]{background-position: -144px -88px}
+.stripe-flag-ico[data-ico="mq"]{background-position: -80px -99px}
+.stripe-flag-ico[data-ico="mh"]{background-position: -224px -88px}
+.stripe-flag-ico[data-ico="mx"]{background-position: -192px -99px}
+.stripe-flag-ico[data-ico="fm"]{background-position: -112px -44px}
+.stripe-flag-ico[data-ico="mz"]{background-position: -224px -99px}
+.stripe-flag-ico[data-ico="md"]{background-position: -176px -88px}
+.stripe-flag-ico[data-ico="mc"]{background-position: -160px -88px}
+.stripe-flag-ico[data-ico="mn"]{background-position: -32px -99px}
+.stripe-flag-ico[data-ico="ms"]{background-position: -112px -99px}
+.stripe-flag-ico[data-ico="mm"]{background-position: -16px -99px}
+.stripe-flag-ico[data-ico="na"]{background-position: -240px -99px}
+.stripe-flag-ico[data-ico="nr"]{background-position: -128px -110px}
+.stripe-flag-ico[data-ico="np"]{background-position: -112px -110px}
+.stripe-flag-ico[data-ico="ne"]{background-position: -16px -110px}
+.stripe-flag-ico[data-ico="ng"]{background-position: -48px -110px}
+.stripe-flag-ico[data-ico="nl"]{background-position: -80px -110px}
+.stripe-flag-ico[data-ico="ni"]{background-position: -64px -110px}
+.stripe-flag-ico[data-ico="nu"]{background-position: -144px -110px}
+.stripe-flag-ico[data-ico="nz"]{background-position: -160px -110px}
+.stripe-flag-ico[data-ico="nc"]{background-position: 0px -110px}
+.stripe-flag-ico[data-ico="no"]{background-position: -96px -110px}
+.stripe-flag-ico[data-ico="ae"]{background-position: -32px 0px}
+.stripe-flag-ico[data-ico="om"]{background-position: -176px -110px}
+.stripe-flag-ico[data-ico="nf"]{background-position: -32px -110px}
+.stripe-flag-ico[data-ico="cx"]{background-position: 0% 0%}
+.stripe-flag-ico[data-ico="bl"]{background-position: 0% 0%}
+.stripe-flag-ico[data-ico="mf"]{background-position: 0% 0%}
+.stripe-flag-ico[data-ico="sh"]{background-position: -112px -132px}
+.stripe-flag-ico[data-ico="cv"]{background-position: -16px -33px}
+.stripe-flag-ico[data-ico="ck"]{background-position: -160px -22px}
+.stripe-flag-ico[data-ico="tc"]{background-position: -96px -143px}
+.stripe-flag-ico[data-ico="wf"]{background-position: -64px -165px}
+.stripe-flag-ico[data-ico="pk"]{background-position: -16px -121px}
+.stripe-flag-ico[data-ico="pw"]{background-position: -128px -121px}
+.stripe-flag-ico[data-ico="ps"]{background-position: -96px -121px}
+.stripe-flag-ico[data-ico="pa"]{background-position: -192px -110px}
+.stripe-flag-ico[data-ico="pg"]{background-position: -240px -110px}
+.stripe-flag-ico[data-ico="py"]{background-position: -144px -121px}
+.stripe-flag-ico[data-ico="pe"]{background-position: -208px -110px}
+.stripe-flag-ico[data-ico="pn"]{background-position: -64px -121px}
+.stripe-flag-ico[data-ico="pl"]{background-position: -32px -121px}
+.stripe-flag-ico[data-ico="pt"]{background-position: -112px -121px}
+.stripe-flag-ico[data-ico="pr"]{background-position: -80px -121px}
+.stripe-flag-ico[data-ico="kr"]{background-position: -144px -77px}
+.stripe-flag-ico[data-ico="re"]{background-position: -176px -121px}
+.stripe-flag-ico[data-ico="ru"]{background-position: -224px -121px}
+.stripe-flag-ico[data-ico="rw"]{background-position: -240px -121px}
+.stripe-flag-ico[data-ico="ro"]{background-position: -192px -121px}
+.stripe-flag-ico[data-ico="sv"]{background-position: -32px -143px}
+.stripe-flag-ico[data-ico="ws"]{background-position: -80px -165px}
+.stripe-flag-ico[data-ico="sm"]{background-position: -176px -132px}
+.stripe-flag-ico[data-ico="st"]{background-position: -16px -143px}
+.stripe-flag-ico[data-ico="sa"]{background-position: 0px -132px}
+.stripe-flag-ico[data-ico="sz"]{background-position: -80px -143px}
+.stripe-flag-ico[data-ico="mp"]{background-position: -64px -99px}
+.stripe-flag-ico[data-ico="sc"]{background-position: -32px -132px}
+.stripe-flag-ico[data-ico="pm"]{background-position: -48px -121px}
+.stripe-flag-ico[data-ico="sn"]{background-position: -192px -132px}
+.stripe-flag-ico[data-ico="vc"]{background-position: -208px -154px}
+.stripe-flag-ico[data-ico="kn"]{background-position: -112px -77px}
+.stripe-flag-ico[data-ico="lc"]{background-position: 0px -88px}
+.stripe-flag-ico[data-ico="rs"]{background-position: -208px -121px}
+.stripe-flag-ico[data-ico="sg"]{background-position: -96px -132px}
+.stripe-flag-ico[data-ico="sx"]{background-position: -48px -143px}
+.stripe-flag-ico[data-ico="sy"]{background-position: -64px -143px}
+.stripe-flag-ico[data-ico="sk"]{background-position: -144px -132px}
+.stripe-flag-ico[data-ico="si"]{background-position: -128px -132px}
+.stripe-flag-ico[data-ico="us"]{background-position: -144px -154px}
+.stripe-flag-ico[data-ico="sb"]{background-position: -16px -132px}
+.stripe-flag-ico[data-ico="so"]{background-position: -208px -132px}
+.stripe-flag-ico[data-ico="sd"]{background-position: -64px -132px}
+.stripe-flag-ico[data-ico="sr"]{background-position: -240px -132px}
+.stripe-flag-ico[data-ico="sl"]{background-position: -160px -132px}
+.stripe-flag-ico[data-ico="tj"]{background-position: -176px -143px}
+.stripe-flag-ico[data-ico="th"]{background-position: -160px -143px}
+.stripe-flag-ico[data-ico="tw"]{background-position: -64px -154px}
+.stripe-flag-ico[data-ico="tz"]{background-position: -80px -154px}
+.stripe-flag-ico[data-ico="tg"]{background-position: -144px -143px}
+.stripe-flag-ico[data-ico="tk"]{background-position: -192px -143px}
+.stripe-flag-ico[data-ico="to"]{background-position: 0px -154px}
+.stripe-flag-ico[data-ico="tt"]{background-position: -32px -154px}
+.stripe-flag-ico[data-ico="tv"]{background-position: -48px -154px}
+.stripe-flag-ico[data-ico="tn"]{background-position: -240px -143px}
+.stripe-flag-ico[data-ico="tm"]{background-position: -224px -143px}
+.stripe-flag-ico[data-ico="tr"]{background-position: -16px -154px}
+.stripe-flag-ico[data-ico="ug"]{background-position: -112px -154px}
+.stripe-flag-ico[data-ico="uz"]{background-position: -176px -154px}
+.stripe-flag-ico[data-ico="ua"]{background-position: -96px -154px}
+.stripe-flag-ico[data-ico="uy"]{background-position: -160px -154px}
+.stripe-flag-ico[data-ico="fo"]{background-position: -128px -44px}
+.stripe-flag-ico[data-ico="fj"]{background-position: -80px -44px}
+.stripe-flag-ico[data-ico="ph"]{background-position: 0px -121px}
+.stripe-flag-ico[data-ico="fi"]{background-position: -64px -44px}
+.stripe-flag-ico[data-ico="fk"]{background-position: -96px -44px}
+.stripe-flag-ico[data-ico="fr"]{background-position: -144px -44px}
+.stripe-flag-ico[data-ico="gf"]{background-position: -224px -44px}
+.stripe-flag-ico[data-ico="pf"]{background-position: -224px -110px}
+.stripe-flag-ico[data-ico="hr"]{background-position: 0px -66px}
+.stripe-flag-ico[data-ico="cf"]{background-position: -96px -22px}
+.stripe-flag-ico[data-ico="td"]{background-position: -112px -143px}
+.stripe-flag-ico[data-ico="me"]{background-position: -192px -88px}
+.stripe-flag-ico[data-ico="cz"]{background-position: -64px -33px}
+.stripe-flag-ico[data-ico="cl"]{background-position: -176px -22px}
+.stripe-flag-ico[data-ico="ch"]{background-position: -128px -22px}
+.stripe-flag-ico[data-ico="se"]{background-position: -80px -132px}
+.stripe-flag-ico[data-ico="lk"]{background-position: -32px -88px}
+.stripe-flag-ico[data-ico="ec"]{background-position: -176px -33px}
+.stripe-flag-ico[data-ico="gq"]{background-position: -96px -55px}
+.stripe-flag-ico[data-ico="er"]{background-position: 0px -44px}
+.stripe-flag-ico[data-ico="ee"]{background-position: -192px -33px}
+.stripe-flag-ico[data-ico="et"]{background-position: -32px -44px}
+.stripe-flag-ico[data-ico="za"]{background-position: -128px -165px}
+.stripe-flag-ico[data-ico="ss"]{background-position: 0px -143px}
+.stripe-flag-ico[data-ico="jm"]{background-position: -240px -66px}
+.stripe-flag-ico[data-ico="jp"]{background-position: -16px -77px}
